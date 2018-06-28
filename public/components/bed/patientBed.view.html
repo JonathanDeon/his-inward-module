@@ -1,0 +1,29 @@
+<div class="col-md-12 col-xs-12">
+    <div class="card">
+        <div class="card-body" ng-controller="BedController as showCase">
+            <table datatable="ng" class="datatable table table-striped primary dataTable no-footer" cellspacing="0" width="100%" id="DataTables_Table_0"
+                role="grid" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+                <thead>
+                    <tr role="row">
+                        <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;">Bed ID</th>
+                        <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;">Date Added</th>
+                        <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 300px;">Bed Type</th>
+                        <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 300px;">Availability</th>
+                        <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 105px;"></th>
+                </thead>
+                <tbody>
+                    <tr role="row" ng-repeat="bed in showCase.beds | filter:completedFilter">
+                        <td>{{ bed.bId }}</td>
+                        <td>{{ bed.added_at | date : "dd-MM-y" }}</td>
+                        <td>{{ bed.type }}</td>
+                        <td>
+                            <span ng-if="bed.available" class="badge badge-success badge-icon"><i class="fa fa-check" aria-hidden="true"></i><span>Availabile </span></span>
+                            <span ng-if="!bed.available" class="badge badge-danger badge-icon"><i class="fa fa-times" aria-hidden="true"></i><span>Not Availabile </span></span>
+                        </td>
+                        <td><button type="button" class="btn btn-info btn-sm" ng-click="getBed(bed.bId)"><i class="fa fa-user-plus" aria-hidden="true"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
